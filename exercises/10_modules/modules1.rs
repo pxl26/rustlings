@@ -5,12 +5,19 @@ mod sausage_factory {
         String::from("Ginger")
     }
 
-    fn make_sausage() {
+    pub fn make_sausage() {
         get_secret_recipe();
         println!("sausage!");
+    }
+
+    pub mod restaurant {
+        pub fn get_name() -> String {
+            "My rest".to_string()
+        }
     }
 }
 
 fn main() {
     sausage_factory::make_sausage();
+    sausage_factory::restaurant::get_name();
 }
