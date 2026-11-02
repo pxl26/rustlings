@@ -1,3 +1,16 @@
+struct MyItem(u64);
+impl Iterator for MyItem {
+    type Item = u64;
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.0 == 0 {
+            None
+        } else {
+            self.0 -= 1;
+            Some(self.0 + 1)
+        }
+    }
+}
+
 fn factorial(num: u64) -> u64 {
     // TODO: Complete this function to return the factorial of `num` which is
     // defined as `1 * 2 * 3 * … * num`.
@@ -10,6 +23,9 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+    //
+    //(1..num + 1).product()
+    MyItem(num).product()
 }
 
 fn main() {
